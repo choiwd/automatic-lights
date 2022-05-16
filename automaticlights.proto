@@ -24,8 +24,8 @@ package autoLights;
 service AutomaticLights {
   // probes a node to see if its online
   rpc TurnOnOff (Light) returns (Light) {}
-  rpc vote (voto) return (voto) {}
-  rpc status (Light) return (Light) {}
+  rpc vote (voto) returns (voto) {}
+  rpc status (Light) returns (Light) {}
 }
 
 message voto {
