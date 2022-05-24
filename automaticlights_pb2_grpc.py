@@ -6,7 +6,7 @@ import automaticlights_pb2 as automaticlights__pb2
 
 
 class AutomaticLightsStub(object):
-    """The greeting service definition.
+    """The AutomaticLights service definition.
     """
 
     def __init__(self, channel):
@@ -17,40 +17,36 @@ class AutomaticLightsStub(object):
         """
         self.TurnOnOff = channel.unary_unary(
                 '/autoLights.AutomaticLights/TurnOnOff',
-                request_serializer=automaticlights__pb2.Light.SerializeToString,
-                response_deserializer=automaticlights__pb2.Light.FromString,
-                )
-        self.vote = channel.unary_unary(
-                '/autoLights.AutomaticLights/vote',
-                request_serializer=automaticlights__pb2.voto.SerializeToString,
-                response_deserializer=automaticlights__pb2.voto.FromString,
+                request_serializer=automaticlights__pb2.request.SerializeToString,
+                response_deserializer=automaticlights__pb2.request.FromString,
                 )
         self.status = channel.unary_unary(
                 '/autoLights.AutomaticLights/status',
-                request_serializer=automaticlights__pb2.Light.SerializeToString,
-                response_deserializer=automaticlights__pb2.Light.FromString,
+                request_serializer=automaticlights__pb2.query.SerializeToString,
+                response_deserializer=automaticlights__pb2.query.FromString,
                 )
 
 
 class AutomaticLightsServicer(object):
-    """The greeting service definition.
+    """The AutomaticLights service definition.
     """
 
     def TurnOnOff(self, request, context):
-        """probes a node to see if its online
+        """Sends a simple request to turn on/off the lights. 
+        The client message contains its desired state.
+        The server returns the state after processing the request. If it succedes, voteID = 0; non-zero number, otherwise.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def vote(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def status(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Queries the state of the room (light intensity, state on/off, vote going on)
+        Every 5s(?) queries the server about: 
+        1. the light intensity (numerical value of the sensor reading);
+        2. current state (true if on, false otherwise);
+        3. and if there is a vote going on (vote id number, randomly generated, 0 if none).
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -60,18 +56,13 @@ def add_AutomaticLightsServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'TurnOnOff': grpc.unary_unary_rpc_method_handler(
                     servicer.TurnOnOff,
-                    request_deserializer=automaticlights__pb2.Light.FromString,
-                    response_serializer=automaticlights__pb2.Light.SerializeToString,
-            ),
-            'vote': grpc.unary_unary_rpc_method_handler(
-                    servicer.vote,
-                    request_deserializer=automaticlights__pb2.voto.FromString,
-                    response_serializer=automaticlights__pb2.voto.SerializeToString,
+                    request_deserializer=automaticlights__pb2.request.FromString,
+                    response_serializer=automaticlights__pb2.request.SerializeToString,
             ),
             'status': grpc.unary_unary_rpc_method_handler(
                     servicer.status,
-                    request_deserializer=automaticlights__pb2.Light.FromString,
-                    response_serializer=automaticlights__pb2.Light.SerializeToString,
+                    request_deserializer=automaticlights__pb2.query.FromString,
+                    response_serializer=automaticlights__pb2.query.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -81,7 +72,7 @@ def add_AutomaticLightsServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class AutomaticLights(object):
-    """The greeting service definition.
+    """The AutomaticLights service definition.
     """
 
     @staticmethod
@@ -96,25 +87,8 @@ class AutomaticLights(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/autoLights.AutomaticLights/TurnOnOff',
-            automaticlights__pb2.Light.SerializeToString,
-            automaticlights__pb2.Light.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def vote(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/autoLights.AutomaticLights/vote',
-            automaticlights__pb2.voto.SerializeToString,
-            automaticlights__pb2.voto.FromString,
+            automaticlights__pb2.request.SerializeToString,
+            automaticlights__pb2.request.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -130,7 +104,7 @@ class AutomaticLights(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/autoLights.AutomaticLights/status',
-            automaticlights__pb2.Light.SerializeToString,
-            automaticlights__pb2.Light.FromString,
+            automaticlights__pb2.query.SerializeToString,
+            automaticlights__pb2.query.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

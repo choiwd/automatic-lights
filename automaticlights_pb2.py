@@ -14,35 +14,35 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x61utomaticlights.proto\x12\nautoLights\"\x15\n\x04voto\x12\r\n\x05OnOff\x18\x01 \x01(\x08\")\n\x05Light\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x11\n\tintensity\x18\x02 \x01(\x05\x32\xa6\x01\n\x0f\x41utomaticLights\x12\x33\n\tTurnOnOff\x12\x11.autoLights.Light\x1a\x11.autoLights.Light\"\x00\x12,\n\x04vote\x12\x10.autoLights.voto\x1a\x10.autoLights.voto\"\x00\x12\x30\n\x06status\x12\x11.autoLights.Light\x1a\x11.autoLights.Light\"\x00\x42\x1c\n\x03sdsB\rkademliaProtoP\x01\xa2\x02\x03kadb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x61utomaticlights.proto\x12\nautoLights\"(\n\x07request\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\"9\n\x05query\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x11\n\tintensity\x18\x02 \x01(\x05\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\x32|\n\x0f\x41utomaticLights\x12\x37\n\tTurnOnOff\x12\x13.autoLights.request\x1a\x13.autoLights.request\"\x00\x12\x30\n\x06status\x12\x11.autoLights.query\x1a\x11.autoLights.query\"\x00\x42 \n\x02seB\x0f\x61utomaticLightsP\x01\xa2\x02\x06\x61utltsb\x06proto3')
 
 
 
-_VOTO = DESCRIPTOR.message_types_by_name['voto']
-_LIGHT = DESCRIPTOR.message_types_by_name['Light']
-voto = _reflection.GeneratedProtocolMessageType('voto', (_message.Message,), {
-  'DESCRIPTOR' : _VOTO,
+_REQUEST = DESCRIPTOR.message_types_by_name['request']
+_QUERY = DESCRIPTOR.message_types_by_name['query']
+request = _reflection.GeneratedProtocolMessageType('request', (_message.Message,), {
+  'DESCRIPTOR' : _REQUEST,
   '__module__' : 'automaticlights_pb2'
-  # @@protoc_insertion_point(class_scope:autoLights.voto)
+  # @@protoc_insertion_point(class_scope:autoLights.request)
   })
-_sym_db.RegisterMessage(voto)
+_sym_db.RegisterMessage(request)
 
-Light = _reflection.GeneratedProtocolMessageType('Light', (_message.Message,), {
-  'DESCRIPTOR' : _LIGHT,
+query = _reflection.GeneratedProtocolMessageType('query', (_message.Message,), {
+  'DESCRIPTOR' : _QUERY,
   '__module__' : 'automaticlights_pb2'
-  # @@protoc_insertion_point(class_scope:autoLights.Light)
+  # @@protoc_insertion_point(class_scope:autoLights.query)
   })
-_sym_db.RegisterMessage(Light)
+_sym_db.RegisterMessage(query)
 
 _AUTOMATICLIGHTS = DESCRIPTOR.services_by_name['AutomaticLights']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\n\003sdsB\rkademliaProtoP\001\242\002\003kad'
-  _VOTO._serialized_start=37
-  _VOTO._serialized_end=58
-  _LIGHT._serialized_start=60
-  _LIGHT._serialized_end=101
-  _AUTOMATICLIGHTS._serialized_start=104
-  _AUTOMATICLIGHTS._serialized_end=270
+  DESCRIPTOR._serialized_options = b'\n\002seB\017automaticLightsP\001\242\002\006autlts'
+  _REQUEST._serialized_start=37
+  _REQUEST._serialized_end=77
+  _QUERY._serialized_start=79
+  _QUERY._serialized_end=136
+  _AUTOMATICLIGHTS._serialized_start=138
+  _AUTOMATICLIGHTS._serialized_end=262
 # @@protoc_insertion_point(module_scope)
