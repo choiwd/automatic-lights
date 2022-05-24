@@ -14,25 +14,42 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "sds";
-option java_outer_classname = "kademliaProto";
-option objc_class_prefix = "kad";
+option java_package = "se";
+option java_outer_classname = "automaticLights";
+option objc_class_prefix = "autlts";
 
 package autoLights;
 
-// The greeting service definition.
+// The AutomaticLights service definition.
 service AutomaticLights {
-  // probes a node to see if its online
-  rpc TurnOnOff (Light) returns (Light) {}
-  rpc vote (voto) returns (voto) {}
-  rpc status (Light) returns (Light) {}
+  // Sends a simple request to turn on/off the lights. 
+  // The client message contains its desired state.
+  // The server returns the state after processing the request. If it succedes, voteID = 0; non-zero number, otherwise.
+  rpc TurnOnOff (request) returns (request) {}
+  
+  // Queries the state of the room (light intensity, state on/off, vote going on)
+  // Every 5s(?) queries the server about: 
+  // 1. the light intensity (numerical value of the sensor reading);
+  // 2. current state (true if on, false otherwise);
+  // 3. and if there is a vote going on (vote id number, randomly generated, 0 if none).
+  rpc status (query) returns (query) {}
 }
 
-message voto {
+// Short description of intended program flow:
+// 1. Client sends request;
+// 2. Server responds.
+//		2.1. If it succedes, ends.
+//		2.2. If it fails, make a vote.
+//			2.2.2. Notify other users that there is a vote going on.
+//       	2.2.3. Collect votes; make decision.
+
+message request {
   bool OnOff = 1;
+  int32 voteID = 3;
 }
 
-message Light {
+message query {
   bool OnOff = 1;
   int32 intensity = 2;
+  int32 voteID = 3;
 }
