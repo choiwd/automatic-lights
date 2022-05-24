@@ -29,6 +29,9 @@ import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.launch
 import java.io.Closeable
 
+import android.graphics.Color
+import io.grpc.examples.helloworld.databinding.ActivityMainBinding
+
 class MainActivity : AppCompatActivity() {
 
     private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
@@ -97,7 +100,11 @@ fun Greeter(greeterRCP: GreeterRCP) {
 
         Button({ scope.launch { greeterRCP.sayHello(nameState.value.text) } }, Modifier.padding(10.dp)) {
         Text(stringResource(R.string.send_request))
-    }
+        }
+
+        Button({ scope.launch { greeterRCP.sayHello(nameState.value.text) } }, Modifier.padding(10.dp)) {
+            Text("Oi, caralho")
+        }
 
         if (greeterRCP.responseState.value.isNotEmpty()) {
             Text(stringResource(R.string.server_response), modifier = Modifier.padding(top = 10.dp))

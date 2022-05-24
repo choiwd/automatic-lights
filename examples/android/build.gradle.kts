@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+
+    //id("org.jetbrains.kotlin.android")
 }
 
 val composeVersion = "1.1.0"
@@ -19,6 +21,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext["coroutinesVersion"]}")
     implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
     debugImplementation("androidx.compose.ui:ui-tooling:1.1.1")
+	
+	implementation("androidx.core:core-ktx:1.7.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("com.google.android.material:material:1.6.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 
     runtimeOnly("io.grpc:grpc-okhttp:${rootProject.ext["grpcVersion"]}")
 }
@@ -51,6 +61,8 @@ android {
 
     buildFeatures {
         compose = true
+		viewBinding = true
+        //dataBinding = true
     }
 
     composeOptions {
