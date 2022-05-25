@@ -31,7 +31,8 @@ service AutomaticLights {
   // Every 5s(?) queries the server about: 
   // 1. the light intensity (numerical value of the sensor reading);
   // 2. current state (true if on, false otherwise);
-  // 3. and if there is a vote going on (vote id number, randomly generated, 0 if none).
+  // 3. If there is a vote going on (vote id number, randomly generated, 0 if none)
+  // 4. The list of people inside the room
   rpc status (queryMessage) returns (queryMessage) {}
 }
 
@@ -52,4 +53,5 @@ message queryMessage {
   bool OnOff = 1;
   int32 intensity = 2;
   int32 voteID = 3;
+  repeated string participants = 4;
 }

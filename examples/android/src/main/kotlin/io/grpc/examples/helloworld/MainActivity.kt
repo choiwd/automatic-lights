@@ -28,6 +28,7 @@ import java.io.Closeable
 
 import android.graphics.Color
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
+import se.queryMessage
 import se.requestMessage
 
 class MainActivity : AppCompatActivity() {
@@ -110,7 +111,8 @@ class MainActivity : AppCompatActivity() {
 
 class AutomaticLightsRCP(uri: Uri) : Closeable {
     var lightState = false
-    val participants = mutableListOf("")
+    var participants = listOf("")
+    var intensity = 0
     var voteID = 0
 
     private val channel = let {
@@ -128,24 +130,33 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
 
     private val ALCLient = se.AutomaticLightsGrpcKt.AutomaticLightsCoroutineStub(channel)
 
-//    suspend fun sayHello(name: String) {
-//        try {
-//            val request = helloRequest { this.name = name }
-//            val response = greeter.sayHello(request)
-//            responseState.value = response.message
-//        } catch (e: Exception) {
-//            responseState.value = e.message ?: "Unknown Error"
-//            e.printStackTrace()
-//        }
-//    }
-
     suspend fun requestStateChange(state: Boolean){
         try {
             val request = requestMessage.newBuilder()
                 .setOnOff(state)
-                .setVoteID(0).build()
+                .setVoteID(voteID)
+                .build()
             val response = ALCLient.turnOnOff(request)
             lightState = response.onOff
+            voteID = response.voteID
+        } catch (e: Exception) {
+            // What's this? '-'
+            //responseState.value = e.message ?: "Unknown Error"
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun makeQuery(){
+        try {
+            val request = queryMessage.newBuilder()
+                .setOnOff(false)
+                .setVoteID(0)
+                .setIntensity(0)
+                .build()
+            val response = ALCLient.status(request)
+            lightState = response.onOff
+            intensity = response.intensity
+            participants = response.participantsList
 
             // Next steps hook. If this is not 0, make a vote.
             voteID = response.voteID
@@ -154,12 +165,6 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
             //responseState.value = e.message ?: "Unknown Error"
             e.printStackTrace()
         }
-
-
-    }
-
-    suspend fun makeQuery(){
-
     }
 
     override fun close() {
