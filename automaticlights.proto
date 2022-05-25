@@ -25,14 +25,14 @@ service AutomaticLights {
   // Sends a simple request to turn on/off the lights. 
   // The client message contains its desired state.
   // The server returns the state after processing the request. If it succedes, voteID = 0; non-zero number, otherwise.
-  rpc TurnOnOff (request) returns (request) {}
+  rpc TurnOnOff (requestMessage) returns (requestMessage) {}
   
   // Queries the state of the room (light intensity, state on/off, vote going on)
   // Every 5s(?) queries the server about: 
   // 1. the light intensity (numerical value of the sensor reading);
   // 2. current state (true if on, false otherwise);
   // 3. and if there is a vote going on (vote id number, randomly generated, 0 if none).
-  rpc status (query) returns (query) {}
+  rpc status (queryMessage) returns (queryMessage) {}
 }
 
 // Short description of intended program flow:
@@ -43,12 +43,12 @@ service AutomaticLights {
 //			2.2.2. Notify other users that there is a vote going on.
 //       	2.2.3. Collect votes; make decision.
 
-message request {
+message requestMessage {
   bool OnOff = 1;
   int32 voteID = 3;
 }
 
-message query {
+message queryMessage {
   bool OnOff = 1;
   int32 intensity = 2;
   int32 voteID = 3;
