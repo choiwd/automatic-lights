@@ -42,16 +42,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.lightbulb.setOnClickListener{ lightButton() }
-        binding.button1.setOnClickListener{ lightButton() }
+        binding.simpleButtom.setOnClickListener{ lightButton() }
     }
 
     private fun lightButton() {
         if (lightIsOn) {
             binding.lightbulb.drawable.setTint(Color.YELLOW)
-            binding.Dummytext.text = "I'm on :D"
+            binding.stateDescription.text = "I'm on :D"
+            binding.simpleButtom.text = "Turn off :D"
         } else {
-            binding.Dummytext.text = "I'm off :D"
+            binding.stateDescription.text = "I'm off :D"
             binding.lightbulb.drawable.setTint(Color.BLACK)
+            binding.simpleButtom.text = "Turn on :D"
         }
         lightIsOn = !lightIsOn
     }
