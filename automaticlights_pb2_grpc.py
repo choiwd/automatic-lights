@@ -17,13 +17,13 @@ class AutomaticLightsStub(object):
         """
         self.TurnOnOff = channel.unary_unary(
                 '/autoLights.AutomaticLights/TurnOnOff',
-                request_serializer=automaticlights__pb2.request.SerializeToString,
-                response_deserializer=automaticlights__pb2.request.FromString,
+                request_serializer=automaticlights__pb2.requestMessage.SerializeToString,
+                response_deserializer=automaticlights__pb2.requestMessage.FromString,
                 )
         self.status = channel.unary_unary(
                 '/autoLights.AutomaticLights/status',
-                request_serializer=automaticlights__pb2.query.SerializeToString,
-                response_deserializer=automaticlights__pb2.query.FromString,
+                request_serializer=automaticlights__pb2.queryMessage.SerializeToString,
+                response_deserializer=automaticlights__pb2.queryMessage.FromString,
                 )
 
 
@@ -45,7 +45,8 @@ class AutomaticLightsServicer(object):
         Every 5s(?) queries the server about: 
         1. the light intensity (numerical value of the sensor reading);
         2. current state (true if on, false otherwise);
-        3. and if there is a vote going on (vote id number, randomly generated, 0 if none).
+        3. If there is a vote going on (vote id number, randomly generated, 0 if none)
+        4. The list of people inside the room
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -56,13 +57,13 @@ def add_AutomaticLightsServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'TurnOnOff': grpc.unary_unary_rpc_method_handler(
                     servicer.TurnOnOff,
-                    request_deserializer=automaticlights__pb2.request.FromString,
-                    response_serializer=automaticlights__pb2.request.SerializeToString,
+                    request_deserializer=automaticlights__pb2.requestMessage.FromString,
+                    response_serializer=automaticlights__pb2.requestMessage.SerializeToString,
             ),
             'status': grpc.unary_unary_rpc_method_handler(
                     servicer.status,
-                    request_deserializer=automaticlights__pb2.query.FromString,
-                    response_serializer=automaticlights__pb2.query.SerializeToString,
+                    request_deserializer=automaticlights__pb2.queryMessage.FromString,
+                    response_serializer=automaticlights__pb2.queryMessage.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -87,8 +88,8 @@ class AutomaticLights(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/autoLights.AutomaticLights/TurnOnOff',
-            automaticlights__pb2.request.SerializeToString,
-            automaticlights__pb2.request.FromString,
+            automaticlights__pb2.requestMessage.SerializeToString,
+            automaticlights__pb2.requestMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -104,7 +105,7 @@ class AutomaticLights(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/autoLights.AutomaticLights/status',
-            automaticlights__pb2.query.SerializeToString,
-            automaticlights__pb2.query.FromString,
+            automaticlights__pb2.queryMessage.SerializeToString,
+            automaticlights__pb2.queryMessage.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

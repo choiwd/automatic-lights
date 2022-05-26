@@ -14,35 +14,35 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x61utomaticlights.proto\x12\nautoLights\"(\n\x07request\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\"9\n\x05query\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x11\n\tintensity\x18\x02 \x01(\x05\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\x32|\n\x0f\x41utomaticLights\x12\x37\n\tTurnOnOff\x12\x13.autoLights.request\x1a\x13.autoLights.request\"\x00\x12\x30\n\x06status\x12\x11.autoLights.query\x1a\x11.autoLights.query\"\x00\x42 \n\x02seB\x0f\x61utomaticLightsP\x01\xa2\x02\x06\x61utltsb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15\x61utomaticlights.proto\x12\nautoLights\"/\n\x0erequestMessage\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\"V\n\x0cqueryMessage\x12\r\n\x05OnOff\x18\x01 \x01(\x08\x12\x11\n\tintensity\x18\x02 \x01(\x05\x12\x0e\n\x06voteID\x18\x03 \x01(\x05\x12\x14\n\x0cparticipants\x18\x04 \x03(\t2\x98\x01\n\x0f\x41utomaticLights\x12\x45\n\tTurnOnOff\x12\x1a.autoLights.requestMessage\x1a\x1a.autoLights.requestMessage\"\x00\x12>\n\x06status\x12\x18.autoLights.queryMessage\x1a\x18.autoLights.queryMessage\"\x00\x42 \n\x02seB\x0f\x61utomaticLightsP\x01\xa2\x02\x06\x61utltsb\x06proto3')
 
 
 
-_REQUEST = DESCRIPTOR.message_types_by_name['request']
-_QUERY = DESCRIPTOR.message_types_by_name['query']
-request = _reflection.GeneratedProtocolMessageType('request', (_message.Message,), {
-  'DESCRIPTOR' : _REQUEST,
+_REQUESTMESSAGE = DESCRIPTOR.message_types_by_name['requestMessage']
+_QUERYMESSAGE = DESCRIPTOR.message_types_by_name['queryMessage']
+requestMessage = _reflection.GeneratedProtocolMessageType('requestMessage', (_message.Message,), {
+  'DESCRIPTOR' : _REQUESTMESSAGE,
   '__module__' : 'automaticlights_pb2'
-  # @@protoc_insertion_point(class_scope:autoLights.request)
+  # @@protoc_insertion_point(class_scope:autoLights.requestMessage)
   })
-_sym_db.RegisterMessage(request)
+_sym_db.RegisterMessage(requestMessage)
 
-query = _reflection.GeneratedProtocolMessageType('query', (_message.Message,), {
-  'DESCRIPTOR' : _QUERY,
+queryMessage = _reflection.GeneratedProtocolMessageType('queryMessage', (_message.Message,), {
+  'DESCRIPTOR' : _QUERYMESSAGE,
   '__module__' : 'automaticlights_pb2'
-  # @@protoc_insertion_point(class_scope:autoLights.query)
+  # @@protoc_insertion_point(class_scope:autoLights.queryMessage)
   })
-_sym_db.RegisterMessage(query)
+_sym_db.RegisterMessage(queryMessage)
 
 _AUTOMATICLIGHTS = DESCRIPTOR.services_by_name['AutomaticLights']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'\n\002seB\017automaticLightsP\001\242\002\006autlts'
-  _REQUEST._serialized_start=37
-  _REQUEST._serialized_end=77
-  _QUERY._serialized_start=79
-  _QUERY._serialized_end=136
-  _AUTOMATICLIGHTS._serialized_start=138
-  _AUTOMATICLIGHTS._serialized_end=262
+  _REQUESTMESSAGE._serialized_start=37
+  _REQUESTMESSAGE._serialized_end=84
+  _QUERYMESSAGE._serialized_start=86
+  _QUERYMESSAGE._serialized_end=172
+  _AUTOMATICLIGHTS._serialized_start=175
+  _AUTOMATICLIGHTS._serialized_end=327
 # @@protoc_insertion_point(module_scope)
