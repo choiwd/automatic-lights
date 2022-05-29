@@ -25,28 +25,74 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.launch
 import java.io.Closeable
+import kotlinx.coroutines.*
 
 import android.graphics.Color
+import androidx.lifecycle.ViewModel
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
 import se.queryMessage
 import se.requestMessage
+import java.time.Duration
+import kotlin.time.Duration.Companion.microseconds
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.seconds
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var lightIsOn = false
+
+    var lightState = false
+    var participants = listOf<String>()
+    var intensity = 0
+    var voteID = 0
+
+    private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
+    private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.lightbulb.setOnClickListener{ lightButton() }
-        binding.simpleButtom.setOnClickListener{ lightButton() }
+        updateView()
+        binding.lightbulb.setOnClickListener{
+            GlobalScope.launch {
+                automaticLightsService.requestStateChange(!lightState)
+                updateView()
+            }
+        }
+        binding.simpleButtom.setOnClickListener{
+            GlobalScope.launch {
+                automaticLightsService.requestStateChange(!lightState)
+                updateView()
+            }
+        }
+
+        // Make query every n seconds
+        val n = 5
+        // Use MainScope() instead of GlobalScope?
+        GlobalScope.launch {
+            while (true) {
+                automaticLightsService.makeQuery()
+
+                lightState = automaticLightsService.lightState
+                participants = automaticLightsService.participants
+                intensity = automaticLightsService.intensity
+                voteID = automaticLightsService.voteID
+
+                // If a vote ID is found, we should ask the user their vote.
+                if (voteID != 0){
+                    // Not implemented
+                    // https://developer.android.com/guide/topics/ui/dialogs
+                }
+
+                delay(n.seconds)
+            }
+        }
     }
 
-    private fun lightButton() {
-        if (lightIsOn) {
+    private fun updateView() {
+        if (lightState) {
             binding.lightbulb.drawable.setTint(Color.YELLOW)
             binding.stateDescription.text = "I'm on :D"
             binding.simpleButtom.text = "Turn off :D"
@@ -55,7 +101,16 @@ class MainActivity : AppCompatActivity() {
             binding.lightbulb.drawable.setTint(Color.BLACK)
             binding.simpleButtom.text = "Turn on :D"
         }
-        lightIsOn = !lightIsOn
+
+        var list = ""
+        if (participants.isEmpty()){
+            list = "Room is empty"
+        }else{
+            for (person in participants){
+                list += person + "\n"
+            }
+        }
+        binding.ListOfPeople.text = list
     }
 
 //    private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
