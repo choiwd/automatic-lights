@@ -16,7 +16,7 @@ if __name__ == '__main__':
 
         if line=="Entered":
             c+=1
-        if line=="Left":
+        if line=="Left" and c>0:
             c-=1
 
         if line=="0":
@@ -26,14 +26,12 @@ if __name__ == '__main__':
 
         if c==0 and OnOff==True:
             OnOff=False
-            command=0
-            ser.write(str(command).encode('utf-8'))
+            ser.write(str(int(OnOff)).encode('utf-8'))
             print("Desliga a luz")
 
         if c>0 and OnOff==False and intensity==1:
             OnOff=True
-            command=1
-            ser.write(str(command).encode('utf-8'))
+            ser.write(str(int(OnOff)).encode('utf-8'))
             print("Liga a luz")
 
         print(c)
