@@ -3,23 +3,6 @@ package io.grpc.examples.helloworld
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.unit.dp
 import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
@@ -28,71 +11,46 @@ import java.io.Closeable
 import kotlinx.coroutines.*
 
 import android.graphics.Color
-import androidx.lifecycle.ViewModel
+import androidx.activity.viewModels
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
 import se.queryMessage
 import se.requestMessage
-import java.time.Duration
-import kotlin.time.Duration.Companion.microseconds
-import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    var lightState = false
-    var participants = listOf<String>()
-    var intensity = 0
-    var voteID = 0
+    private val mainViewModel: MainViewModel by viewModels()
 
-    private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
-    private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
+    //private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
+    //private val uri by lazy { Uri.parse("172.23.112.1:5000") }
+    //private val uri by lazy { Uri.parse("http://localhost:50051") }
+    //private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        mainViewModel.state.observe(this) { contents ->
+            updateView(contents)
+        }
+
+        print(resources.getString(R.string.server_url))
+        //participants = listOf(resources.getString(R.string.server_url))
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        updateView()
         binding.lightbulb.setOnClickListener{
-            GlobalScope.launch {
-                automaticLightsService.requestStateChange(!lightState)
-                updateView()
-            }
+            mainViewModel.requestStateChange()
         }
         binding.simpleButtom.setOnClickListener{
-            GlobalScope.launch {
-                automaticLightsService.requestStateChange(!lightState)
-                updateView()
-            }
-        }
-
-        // Make query every n seconds
-        val n = 5
-        // Use MainScope() instead of GlobalScope?
-        GlobalScope.launch {
-            while (true) {
-                automaticLightsService.makeQuery()
-
-                lightState = automaticLightsService.lightState
-                participants = automaticLightsService.participants
-                intensity = automaticLightsService.intensity
-                voteID = automaticLightsService.voteID
-
-                // If a vote ID is found, we should ask the user their vote.
-                if (voteID != 0){
-                    // Not implemented
-                    // https://developer.android.com/guide/topics/ui/dialogs
-                }
-
-                delay(n.seconds)
-            }
+            mainViewModel.requestStateChange()
         }
     }
 
-    private fun updateView() {
-        if (lightState) {
+    private fun updateView(state : Contents) {
+
+        if (state.lightState) {
             binding.lightbulb.drawable.setTint(Color.YELLOW)
             binding.stateDescription.text = "I'm on :D"
             binding.simpleButtom.text = "Turn off :D"
@@ -103,10 +61,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         var list = ""
-        if (participants.isEmpty()){
+        if (state.participants.isEmpty()){
             list = "Room is empty"
         }else{
-            for (person in participants){
+            for (person in state.participants){
                 list += person + "\n"
             }
         }
