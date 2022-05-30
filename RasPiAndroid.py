@@ -4,13 +4,19 @@ import automaticlights_pb2
 import automaticlights_pb2_grpc
 from concurrent import futures
 
+
+count=0
+OnOff=False
+intensity=0
+participants=[]
+
 class AutomaticLightsServicer(automaticlights_pb2_grpc.AutomaticLightsServicer):
 
     def __init__(self):
-        self.OnOff=False
-        self.intensity=0
-        self.count=0
-        self.participants=[]
+        self.OnOff=OnOff
+        self.intensity=intensity
+        self.count=count
+        self.participants=participants
 
     def TurnOnOff(self, request, context):
         if len(self.participants)>0:
@@ -42,7 +48,7 @@ if __name__ == '__main__':
     logging.basicConfig()
     serve()
 
-""" example=AutomaticLightsServicer()
+'''example=AutomaticLightsServicer()
 request1=automaticlights_pb2.requestMessage(OnOff=True, voteID=1)
 request2=automaticlights_pb2.requestMessage(OnOff=False, voteID=1)
 
@@ -60,4 +66,4 @@ state4=example.status(1,2)
 print(state1.OnOff,state1.intensity,state1.participants)
 print(state2.OnOff,state2.intensity,state2.participants)
 print(state3.OnOff,state3.intensity,state3.participants)
-print(state4.OnOff,state4.intensity,state4.participants) """
+print(state4.OnOff,state4.intensity,state4.participants)'''
