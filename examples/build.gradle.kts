@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application") version "7.2.0" apply false
+    id("com.android.application") version "7.2.1" apply false
     id("com.google.protobuf") version "0.8.18" apply false
     kotlin("jvm") version "1.6.10" apply false // Compose Compiler required version
     id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
