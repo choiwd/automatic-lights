@@ -7,7 +7,7 @@ from concurrent import futures
 
 count=0
 OnOff=False
-intensity=0
+intensity=1
 participants=[]
 
 
@@ -16,6 +16,7 @@ class AutomaticLightsServicer(automaticlights_pb2_grpc.AutomaticLightsServicer):
     def TurnOnOff(self, request, context):
         global OnOff
         global intensity
+        global participants
         if len(participants)>0:
             voteID=1
         elif request.OnOff==True:
@@ -27,12 +28,16 @@ class AutomaticLightsServicer(automaticlights_pb2_grpc.AutomaticLightsServicer):
         else:
             OnOff=request.OnOff
             voteID=0
+        print('turn on/off')
         return automaticlights_pb2.requestMessage(OnOff=OnOff, voteID=voteID)
 
     def status(self, request, context):
         global OnOff
         global intensity
         global participants
+        print('status')
+        userid=context.peer()
+        print(context.peer())
         return automaticlights_pb2.queryMessage(OnOff=OnOff, intensity=intensity, voteID=0, participants=participants)
 
 

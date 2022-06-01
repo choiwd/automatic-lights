@@ -14,15 +14,15 @@ if __name__ == '__main__':
         if ser.in_waiting > 0:
             line = ser.readline().decode('utf-8').rstrip()
 
-        if line=="Entered":
-            c+=1
-        if line=="Left" and c>0:
-            c-=1
+            if line=="Entered":
+                c+=1
+            if line=="Left" and c>0:
+                c-=1
 
-        if line=="0":
-            intensity=0
-        if line=="1":
-            intensity=1
+            if line=="0":
+                intensity=0
+            if line=="1":
+                intensity=1
 
         if c==0 and OnOff==True:
             OnOff=False
