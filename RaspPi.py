@@ -19,6 +19,8 @@ participants=[]
 class AutomaticLightsServicer(automaticlights_pb2_grpc.AutomaticLightsServicer):
 
     def TurnOnOff(self, request, context):
+        global OnOff
+        global intensity
         if len(participants)>0:
             voteID=1
         elif request.OnOff==True:
@@ -35,6 +37,9 @@ class AutomaticLightsServicer(automaticlights_pb2_grpc.AutomaticLightsServicer):
         return automaticlights_pb2.requestMessage(OnOff=OnOff, voteID=voteID)
 
     def status(self, request, context):
+        global OnOff
+        global intensity
+        global participants
         return automaticlights_pb2.queryMessage(OnOff=OnOff, intensity=intensity, voteID=0, participants=participants)
 
 
@@ -68,10 +73,10 @@ if __name__ == '__main__':
             elif line=="1":
                 intensity=1
 
-            if count==0 and OnOff==True:
-                OnOff=False
-                ser.write(str(int(OnOff)).encode('utf-8'))
+        if count==0 and OnOff==True:
+            OnOff=False
+            ser.write(str(int(OnOff)).encode('utf-8'))
 
-            if count>0 and OnOff==False and intensity==1:
-                OnOff=True
-                ser.write(str(int(OnOff)).encode('utf-8'))
+        elif count>0 and OnOff==False and intensity==1:
+            OnOff=True
+            ser.write(str(int(OnOff)).encode('utf-8'))
