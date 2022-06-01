@@ -18,8 +18,8 @@ data class Contents(
 class MainViewModel : ViewModel() {
     val state = MutableLiveData<Contents>()
 
-    //private val uri by lazy { Uri.parse("http://localhost:50051") }
-    private val uri by lazy { Uri.parse("http://10.0.2.2:50051/") }
+    //insert server ipv4 address here.
+    private val uri by lazy { Uri.parse("http://172.17.23.78:50051/") }
     private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     init {
@@ -50,7 +50,6 @@ class MainViewModel : ViewModel() {
                 val n = 5
                 delay(n.seconds)
             }
-
         }
     }
 }

@@ -23,20 +23,12 @@ class MainActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModels()
 
-    //private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
-    //private val uri by lazy { Uri.parse("172.23.112.1:5000") }
-    //private val uri by lazy { Uri.parse("http://localhost:50051") }
-    //private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         mainViewModel.state.observe(this) { contents ->
             updateView(contents)
         }
-
-        print(resources.getString(R.string.server_url))
-        //participants = listOf(resources.getString(R.string.server_url))
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -71,58 +63,11 @@ class MainActivity : AppCompatActivity() {
         binding.ListOfPeople.text = list
     }
 
-//    private val uri by lazy { Uri.parse(resources.getString(R.string.server_url)) }
-//    private val greeterService by lazy { GreeterRCP(uri) }
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        setContent {
-//            Surface(color = MaterialTheme.colors.background) {
-//                Greeter(greeterService)
-//            }
-//        }
-//    }
-//
 //    override fun onDestroy() {
 //        super.onDestroy()
 //        greeterService.close()
 //    }
 }
-
-//class GreeterRCP(uri: Uri) : Closeable {
-//    val responseState = mutableStateOf("")
-//
-//    private val channel = let {
-//        println("Connecting to ${uri.host}:${uri.port}")
-//
-//        val builder = ManagedChannelBuilder.forAddress(uri.host, uri.port)
-//        if (uri.scheme == "https") {
-//            builder.useTransportSecurity()
-//        } else {
-//            builder.usePlaintext()
-//        }
-//
-//        builder.executor(Dispatchers.IO.asExecutor()).build()
-//    }
-//
-//    private val greeter = GreeterGrpcKt.GreeterCoroutineStub(channel)
-//
-//    suspend fun sayHello(name: String) {
-//        try {
-//            val request = helloRequest { this.name = name }
-//            val response = greeter.sayHello(request)
-//            responseState.value = response.message
-//        } catch (e: Exception) {
-//            responseState.value = e.message ?: "Unknown Error"
-//            e.printStackTrace()
-//        }
-//    }
-//
-//    override fun close() {
-//        channel.shutdownNow()
-//    }
-//}
 
 class AutomaticLightsRCP(uri: Uri) : Closeable {
     var lightState = false
@@ -186,29 +131,3 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
         channel.shutdownNow()
     }
 }
-
-//@Composable
-//fun Greeter(greeterRCP: GreeterRCP) {
-//
-//    val scope = rememberCoroutineScope()
-//
-//    val nameState = remember { mutableStateOf(TextFieldValue()) }
-//
-//    Column(Modifier.fillMaxWidth().fillMaxHeight(), Arrangement.Top, Alignment.CenterHorizontally) {
-//        Text(stringResource(R.string.name_hint), modifier = Modifier.padding(top = 10.dp))
-//        OutlinedTextField(nameState.value, { nameState.value = it })
-//
-//        Button({ scope.launch { greeterRCP.sayHello(nameState.value.text) } }, Modifier.padding(10.dp)) {
-//        Text(stringResource(R.string.send_request))
-//        }
-//
-//        Button({ scope.launch { greeterRCP.sayHello(nameState.value.text) } }, Modifier.padding(10.dp)) {
-//            Text("Oi, caralho")
-//        }
-//
-//        if (greeterRCP.responseState.value.isNotEmpty()) {
-//            Text(stringResource(R.string.server_response), modifier = Modifier.padding(top = 10.dp))
-//            Text(greeterRCP.responseState.value)
-//        }
-//    }
-//}
