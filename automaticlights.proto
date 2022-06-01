@@ -54,4 +54,5 @@ message queryMessage {
   int32 intensity = 2;
   int32 voteID = 3;
   repeated string participants = 4;
+  string name=5;
 }
