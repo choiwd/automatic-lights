@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
     val state = MutableLiveData<Contents>()
 
     //insert server ipv4 address here.
-    private val uri by lazy { Uri.parse("http://172.17.23.78:50051/") }
+    private val uri by lazy { Uri.parse("http://192.168.0.108:50051/") }
     private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     init {
@@ -52,4 +52,10 @@ class MainViewModel : ViewModel() {
             }
         }
     }
+
+    // This class has no onDestroy method?
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        automaticLightsService.close()
+//    }
 }

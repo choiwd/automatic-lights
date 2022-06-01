@@ -15,7 +15,6 @@ import androidx.activity.viewModels
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
 import se.queryMessage
 import se.requestMessage
-import kotlin.time.Duration.Companion.seconds
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,11 +61,6 @@ class MainActivity : AppCompatActivity() {
         }
         binding.ListOfPeople.text = list
     }
-
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        greeterService.close()
-//    }
 }
 
 class AutomaticLightsRCP(uri: Uri) : Closeable {

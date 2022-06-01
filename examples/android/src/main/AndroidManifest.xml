@@ -10,12 +10,17 @@
             android:label="@string/app_label">
         <activity
                 android:theme="@style/Theme.AppCompat.NoActionBar"
-                android:name="io.grpc.examples.helloworld.MainActivity"
+                android:name="io.grpc.examples.helloworld.Login"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:name="io.grpc.examples.helloworld.MainActivity"
+            android:exported="true">
         </activity>
     </application>
 
