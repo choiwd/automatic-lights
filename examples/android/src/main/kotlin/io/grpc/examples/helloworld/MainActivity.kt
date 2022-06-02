@@ -11,7 +11,10 @@ import java.io.Closeable
 import kotlinx.coroutines.*
 
 import android.graphics.Color
+import android.widget.PopupWindow
 import androidx.activity.viewModels
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModelProvider
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
 import se.queryMessage
 import se.requestMessage
@@ -40,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateView(state : Contents) {
-
         if (state.lightState) {
             binding.lightbulb.drawable.setTint(Color.YELLOW)
             binding.stateDescription.text = "I'm on :D"
@@ -49,6 +51,13 @@ class MainActivity : AppCompatActivity() {
             binding.stateDescription.text = "I'm off :D"
             binding.lightbulb.drawable.setTint(Color.BLACK)
             binding.simpleButtom.text = "Turn on :D"
+        }
+
+        if (state.intensity == 1){
+            binding.stateDescription.text = binding.stateDescription.text.toString() + " and the room is dark"
+        }
+        else{
+            binding.stateDescription.text = binding.stateDescription.text.toString() + " and the room is bright"
         }
 
         var list = ""
@@ -60,6 +69,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.ListOfPeople.text = list
+
+        if (state.voteID != 0){
+//            PopupWindow()
+        }
     }
 }
 
@@ -106,6 +119,7 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
                 .setOnOff(false)
                 .setVoteID(0)
                 .setIntensity(0)
+                .setName(Login.name)
                 .build()
             val response = ALCLient.status(request)
             lightState = response.onOff

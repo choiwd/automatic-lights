@@ -12,14 +12,15 @@ data class Contents(
     var lightState: Boolean = false,
     var participants: List<String> = listOf<String>(),
     var intensity: Int = 0,
-    var voteID: Int = 0
+    var voteID: Int = 0,
+    var name : String = ""
 )
 
 class MainViewModel : ViewModel() {
     val state = MutableLiveData<Contents>()
 
     //insert server ipv4 address here.
-    private val uri by lazy { Uri.parse("http://192.168.0.108:50051/") }
+    private val uri by lazy { Uri.parse("http://${Login.address}:50051/") }
     private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     init {
@@ -39,7 +40,7 @@ class MainViewModel : ViewModel() {
 
     private fun runQuery() {
         viewModelScope.launch {
-            while (true){
+            while (true) {
                 automaticLightsService.makeQuery()
                 state.value = Contents(
                     lightState = automaticLightsService.lightState,
@@ -47,7 +48,7 @@ class MainViewModel : ViewModel() {
                     participants = automaticLightsService.participants,
                     intensity = automaticLightsService.intensity
                 )
-                val n = 5
+                val n = 2
                 delay(n.seconds)
             }
         }
