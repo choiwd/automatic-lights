@@ -8,8 +8,8 @@
 const int LAMPADA = 12; // pin associado a lâmpada
 const int infraRedChange = 400;  // limit for when we know someone passed the sensor
 const int lightLimit = 700;   // limit for the light sensor
-int lightLevel = 0;  // 0 if sensorLight > lightLimit (to much light to switch on LAMPADA)
-                     // 1 if sensorLight =< lightLimit (can switch on LAMPADA)
+int lightLevel = 0;  // 1 if sensorLight > lightLimit (can switch on LAMPADA)
+                     // 0 if sensorLight =< lightLimit (to much light to switch on LAMPADA)
 unsigned long tempoInfrRed = 0;
 unsigned long tempo;
 unsigned long tempoLuz;
