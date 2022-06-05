@@ -4,6 +4,7 @@ import automaticlights_pb2
 import automaticlights_pb2_grpc
 from concurrent import futures
 import time
+import threading
 
 
 count=0
@@ -52,12 +53,13 @@ def serve():
         AutomaticLightsServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
-    #server.wait_for_termination()
+    server.wait_for_termination()
+
 
 if __name__ == '__main__':
     logging.basicConfig()
-    serve()
-
+    x=threading.Thread(target=serve)
+    x.start()
     while True:
         timerKeys=list(usersTimer.keys())
         for key in timerKeys:
