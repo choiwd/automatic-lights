@@ -1,0 +1,52 @@
+io.grpc.examples.helloworld.android-ui-tooling-1.1.1-0 C:\Users\choiw\.gradle\caches\transforms-3\02bc5ad2e483d3cf0d1a8a4d1048c98f\transformed\ui-tooling-1.1.1\res
+io.grpc.examples.helloworld.android-material-1.6.0-1 C:\Users\choiw\.gradle\caches\transforms-3\1a20067f91d76461d09aa2e198235a40\transformed\material-1.6.0\res
+io.grpc.examples.helloworld.android-drawerlayout-1.1.1-2 C:\Users\choiw\.gradle\caches\transforms-3\1e7cb7de632e2b82754d70fe02512b6b\transformed\drawerlayout-1.1.1\res
+io.grpc.examples.helloworld.android-ui-unit-1.1.1-3 C:\Users\choiw\.gradle\caches\transforms-3\26a93bf3354d3708af54c1487f2563b0\transformed\ui-unit-1.1.1\res
+io.grpc.examples.helloworld.android-appcompat-resources-1.4.1-4 C:\Users\choiw\.gradle\caches\transforms-3\35650dc93f84e5294ee7ebcef138f113\transformed\appcompat-resources-1.4.1\res
+io.grpc.examples.helloworld.android-activity-compose-1.4.0-5 C:\Users\choiw\.gradle\caches\transforms-3\3ab6e9dab1a3e4fa6d63185fd81352d1\transformed\activity-compose-1.4.0\res
+io.grpc.examples.helloworld.android-lifecycle-viewmodel-2.3.1-6 C:\Users\choiw\.gradle\caches\transforms-3\49ba2cfe3680dbe698f93159c33f55da\transformed\lifecycle-viewmodel-2.3.1\res
+io.grpc.examples.helloworld.android-emoji2-views-helper-1.0.0-7 C:\Users\choiw\.gradle\caches\transforms-3\51fcd136f079a656d5894c50d7cdc097\transformed\emoji2-views-helper-1.0.0\res
+io.grpc.examples.helloworld.android-ui-tooling-preview-1.1.1-8 C:\Users\choiw\.gradle\caches\transforms-3\5411a79bda8d499907bc7fbf2f6cd544\transformed\ui-tooling-preview-1.1.1\res
+io.grpc.examples.helloworld.android-appcompat-1.4.1-9 C:\Users\choiw\.gradle\caches\transforms-3\5c279edd74a2f5b86c52893c19861b88\transformed\appcompat-1.4.1\res
+io.grpc.examples.helloworld.android-ui-graphics-1.1.1-10 C:\Users\choiw\.gradle\caches\transforms-3\5ee0133335d3646fea8d1dcda27fe357\transformed\ui-graphics-1.1.1\res
+io.grpc.examples.helloworld.android-annotation-experimental-1.1.0-11 C:\Users\choiw\.gradle\caches\transforms-3\61697ad8b17074b6346ea099ce5ae44e\transformed\annotation-experimental-1.1.0\res
+io.grpc.examples.helloworld.android-emoji2-1.0.0-12 C:\Users\choiw\.gradle\caches\transforms-3\694ebc9c8ad79482701f2a24fa10564c\transformed\emoji2-1.0.0\res
+io.grpc.examples.helloworld.android-core-ktx-1.7.0-13 C:\Users\choiw\.gradle\caches\transforms-3\751a64028977eabc084f7e14d020b96b\transformed\core-ktx-1.7.0\res
+io.grpc.examples.helloworld.android-material-ripple-1.1.0-14 C:\Users\choiw\.gradle\caches\transforms-3\7d6f31683aa05dbedd4626b29f1da6cc\transformed\material-ripple-1.1.0\res
+io.grpc.examples.helloworld.android-lifecycle-runtime-2.4.0-15 C:\Users\choiw\.gradle\caches\transforms-3\8671a1919ae9f9103b5006d39bbff291\transformed\lifecycle-runtime-2.4.0\res
+io.grpc.examples.helloworld.android-fragment-1.3.6-16 C:\Users\choiw\.gradle\caches\transforms-3\8c84d2eca50fcc9756333872256a768e\transformed\fragment-1.3.6\res
+io.grpc.examples.helloworld.android-savedstate-1.1.0-17 C:\Users\choiw\.gradle\caches\transforms-3\91643c7e07e3645633e5d388d20ebe89\transformed\savedstate-1.1.0\res
+io.grpc.examples.helloworld.android-constraintlayout-2.1.3-18 C:\Users\choiw\.gradle\caches\transforms-3\927296471d2cb60c812ad3db048fe236\transformed\constraintlayout-2.1.3\res
+io.grpc.examples.helloworld.android-animation-core-1.1.1-19 C:\Users\choiw\.gradle\caches\transforms-3\947d34a0d35b3fefc94290ee09bb6cb2\transformed\animation-core-1.1.1\res
+io.grpc.examples.helloworld.android-lifecycle-process-2.4.0-20 C:\Users\choiw\.gradle\caches\transforms-3\95f56b386874f5f09cc884c294b49c9f\transformed\lifecycle-process-2.4.0\res
+io.grpc.examples.helloworld.android-core-1.7.0-21 C:\Users\choiw\.gradle\caches\transforms-3\a05f8286aa640966fb9fdc3a5f0704ae\transformed\core-1.7.0\res
+io.grpc.examples.helloworld.android-coordinatorlayout-1.1.0-22 C:\Users\choiw\.gradle\caches\transforms-3\a170a38e62fc07a0173f298a0109f5e3\transformed\coordinatorlayout-1.1.0\res
+io.grpc.examples.helloworld.android-ui-text-1.1.1-23 C:\Users\choiw\.gradle\caches\transforms-3\a4f60e1fadcdd8f2126dcc6d7bde774f\transformed\ui-text-1.1.1\res
+io.grpc.examples.helloworld.android-foundation-layout-1.1.0-24 C:\Users\choiw\.gradle\caches\transforms-3\b395e2e74590d8e8fcee6d936eb8e307\transformed\foundation-layout-1.1.0\res
+io.grpc.examples.helloworld.android-runtime-1.1.1-25 C:\Users\choiw\.gradle\caches\transforms-3\b71cb8577405d0fda6bd4e399ad1e7c8\transformed\runtime-1.1.1\res
+io.grpc.examples.helloworld.android-transition-1.2.0-26 C:\Users\choiw\.gradle\caches\transforms-3\bafb99b9984a542219d0e2c91fac240d\transformed\transition-1.2.0\res
+io.grpc.examples.helloworld.android-startup-runtime-1.0.0-27 C:\Users\choiw\.gradle\caches\transforms-3\bbe987248f2e6df826215e44d143a23a\transformed\startup-runtime-1.0.0\res
+io.grpc.examples.helloworld.android-profileinstaller-1.1.0-28 C:\Users\choiw\.gradle\caches\transforms-3\bf3a693358b080a6c6b344612f86c0ef\transformed\profileinstaller-1.1.0\res
+io.grpc.examples.helloworld.android-ui-tooling-data-1.1.1-29 C:\Users\choiw\.gradle\caches\transforms-3\ccef8948970412881c561b41d774fbdd\transformed\ui-tooling-data-1.1.1\res
+io.grpc.examples.helloworld.android-runtime-saveable-1.1.1-30 C:\Users\choiw\.gradle\caches\transforms-3\cd94e795183f6231a8caac74657c50b4\transformed\runtime-saveable-1.1.1\res
+io.grpc.examples.helloworld.android-cardview-1.0.0-31 C:\Users\choiw\.gradle\caches\transforms-3\d21717691d8949dabce651d5f8e1e6c8\transformed\cardview-1.0.0\res
+io.grpc.examples.helloworld.android-recyclerview-1.1.0-32 C:\Users\choiw\.gradle\caches\transforms-3\d361a8d70ebefab5c9511cb02a9f2e15\transformed\recyclerview-1.1.0\res
+io.grpc.examples.helloworld.android-activity-ktx-1.4.0-33 C:\Users\choiw\.gradle\caches\transforms-3\d4cc15f21653254969ff6e7b66325802\transformed\activity-ktx-1.4.0\res
+io.grpc.examples.helloworld.android-material-1.1.0-34 C:\Users\choiw\.gradle\caches\transforms-3\d5362de9c699c1222b80ae4dfbdd3724\transformed\material-1.1.0\res
+io.grpc.examples.helloworld.android-activity-1.4.0-35 C:\Users\choiw\.gradle\caches\transforms-3\d9665ae27dcf81166e1d1d3502f7e235\transformed\activity-1.4.0\res
+io.grpc.examples.helloworld.android-animation-1.1.1-36 C:\Users\choiw\.gradle\caches\transforms-3\db5c1c817e64fdfbcd231b101d2d2f29\transformed\animation-1.1.1\res
+io.grpc.examples.helloworld.android-ui-util-1.1.1-37 C:\Users\choiw\.gradle\caches\transforms-3\dce85131fef4d223ea5eb87341b04e57\transformed\ui-util-1.1.1\res
+io.grpc.examples.helloworld.android-foundation-1.1.0-38 C:\Users\choiw\.gradle\caches\transforms-3\e16de378e2fe7c39947844170c83cd10\transformed\foundation-1.1.0\res
+io.grpc.examples.helloworld.android-viewpager2-1.0.0-39 C:\Users\choiw\.gradle\caches\transforms-3\e638fecbfc00bdfc045c695e199372fc\transformed\viewpager2-1.0.0\res
+io.grpc.examples.helloworld.android-ui-1.1.1-40 C:\Users\choiw\.gradle\caches\transforms-3\eb7e66890b18047a9722cfde387c93ad\transformed\ui-1.1.1\res
+io.grpc.examples.helloworld.android-material-icons-core-1.1.0-41 C:\Users\choiw\.gradle\caches\transforms-3\f17485a9a01fdf0199394c36fcc29c45\transformed\material-icons-core-1.1.0\res
+io.grpc.examples.helloworld.android-ui-geometry-1.1.1-42 C:\Users\choiw\.gradle\caches\transforms-3\fa31ebc5b7849b29cd17539709c2400e\transformed\ui-geometry-1.1.1\res
+io.grpc.examples.helloworld.android-pngs-43 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\generated\res\pngs\debug
+io.grpc.examples.helloworld.android-resValues-44 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\generated\res\resValues\debug
+io.grpc.examples.helloworld.android-rs-45 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\generated\res\rs\debug
+io.grpc.examples.helloworld.android-mergeDebugResources-46 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+io.grpc.examples.helloworld.android-mergeDebugResources-47 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+io.grpc.examples.helloworld.android-merged_res-48 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\build\intermediates\merged_res\debug
+io.grpc.examples.helloworld.android-debug-49 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\src\debug\res
+io.grpc.examples.helloworld.android-main-50 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\android\src\main\res
+io.grpc.examples.helloworld.android-packaged_res-51 C:\Users\choiw\Desktop\2o Semestre\Sistemas embutidos\automatic-lights\AndroidApp\stub-android\build\intermediates\packaged_res\debug

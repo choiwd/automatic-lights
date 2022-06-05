@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "io.grpc.examples.helloworld.android-mergeDebugResources-46:/values-w600dp-land-v13/values-w600dp-land-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\choiw\\.gradle\\caches\\transforms-3\\1a20067f91d76461d09aa2e198235a40\\transformed\\material-1.6.0\\res\\values-w600dp-land-v13\\values-w600dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "54",
+                        "endOffsets": "105"
+                    }
+                }
+            ]
+        }
+    ]
+}
