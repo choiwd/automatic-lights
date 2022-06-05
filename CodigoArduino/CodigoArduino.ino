@@ -79,6 +79,7 @@ void loop() {
     tempoInfrRed = millis();
   } else if (sensorInfraRed1 > infraRedChange and tempoInfrRed != 0 and passed == 2) {
     Serial.println("Entered");
+    delay(1000);
     passed = 0;
     tempoInfrRed = 0;
   } else if (sensorInfraRed2 > infraRedChange and tempoInfrRed==0 and passed==0) {
@@ -86,6 +87,7 @@ void loop() {
     tempoInfrRed = millis();
   } else if (sensorInfraRed2 > infraRedChange and tempoInfrRed != 0 and passed == 1) {
     Serial.println("Left");
+    delay(1000);
     passed = 0;
     tempoInfrRed = 0;
   }
