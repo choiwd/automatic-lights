@@ -6,15 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import io.grpc.ManagedChannelBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
-import kotlinx.coroutines.launch
 import java.io.Closeable
-import kotlinx.coroutines.*
 
 import android.graphics.Color
-import android.widget.PopupWindow
 import androidx.activity.viewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModelProvider
 import io.grpc.examples.helloworld.databinding.ActivityMainBinding
 import se.queryMessage
 import se.requestMessage
@@ -34,6 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Define actions to be performed on click
         binding.lightbulb.setOnClickListener{
             mainViewModel.requestStateChange()
         }
@@ -71,7 +68,8 @@ class MainActivity : AppCompatActivity() {
         binding.ListOfPeople.text = list
 
         if (state.voteID != 0){
-//            PopupWindow()
+            // NOT IMPLEMENTED. The vote system was supposed to be
+            // called here.
         }
     }
 }
@@ -107,8 +105,6 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
             lightState = response.onOff
             voteID = response.voteID
         } catch (e: Exception) {
-            // What's this? '-'
-            //responseState.value = e.message ?: "Unknown Error"
             e.printStackTrace()
         }
     }
@@ -129,8 +125,6 @@ class AutomaticLightsRCP(uri: Uri) : Closeable {
             // Next steps hook. If this is not 0, make a vote.
             voteID = response.voteID
         } catch (e: Exception) {
-            // What's this? '-'
-            //responseState.value = e.message ?: "Unknown Error"
             e.printStackTrace()
         }
     }
