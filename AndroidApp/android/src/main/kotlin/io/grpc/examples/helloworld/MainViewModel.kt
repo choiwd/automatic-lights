@@ -9,6 +9,8 @@ import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.seconds
 
 data class Contents(
+    // Data structure to save room state
+
     var lightState: Boolean = false,
     var participants: List<String> = listOf<String>(),
     var intensity: Int = 0,
@@ -19,12 +21,14 @@ data class Contents(
 class MainViewModel : ViewModel() {
     val state = MutableLiveData<Contents>()
 
-    //insert server ipv4 address here.
+    // insert server ipv4 address here.
     private val uri by lazy { Uri.parse("http://${Login.address}:50051/") }
     private val automaticLightsService by lazy { AutomaticLightsRCP(uri) }
 
     init {
         state.value = Contents()
+
+        // Run background thread that will query the server every n seconds
         runQuery()
     }
 
@@ -53,10 +57,4 @@ class MainViewModel : ViewModel() {
             }
         }
     }
-
-    // This class has no onDestroy method?
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        automaticLightsService.close()
-//    }
 }
