@@ -1,11 +1,43 @@
 [
     {
-        "merged": "io.grpc.examples.helloworld.android-merged_res-48:/drawable_ic_launcher_background.xml.flat",
-        "source": "io.grpc.examples.helloworld.android-main-50:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\xml\\data_extraction_rules.xml"
     },
     {
         "merged": "io.grpc.examples.helloworld.android-merged_res-48:/xml_backup_rules.xml.flat",
         "source": "io.grpc.examples.helloworld.android-main-50:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\drawable_ic_baseline_wb_incandescent_24.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\drawable\\ic_baseline_wb_incandescent_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "io.grpc.examples.helloworld.android-merged_res-48:/drawable_ic_baseline_wb_incandescent_24.xml.flat",
+        "source": "io.grpc.examples.helloworld.android-main-50:/drawable/ic_baseline_wb_incandescent_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\layout_login.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\layout\\login.xml"
+    },
+    {
+        "merged": "io.grpc.examples.helloworld.android-merged_res-48:/drawable_ic_launcher_background.xml.flat",
+        "source": "io.grpc.examples.helloworld.android-main-50:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-merged_res-48:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\layout\\activity_main.xml"
     },
     {
         "merged": "io.grpc.examples.helloworld.android-merged_res-48:/layout_login.xml.flat",
@@ -14,10 +46,6 @@
     {
         "merged": "io.grpc.examples.helloworld.android-merged_res-48:/drawable-v24_ic_launcher_foreground.xml.flat",
         "source": "io.grpc.examples.helloworld.android-main-50:/drawable-v24/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "io.grpc.examples.helloworld.android-merged_res-48:/drawable_ic_baseline_wb_incandescent_24.xml.flat",
-        "source": "io.grpc.examples.helloworld.android-main-50:/drawable/ic_baseline_wb_incandescent_24.xml"
     },
     {
         "merged": "io.grpc.examples.helloworld.android-merged_res-48:/layout_activity_main.xml.flat",

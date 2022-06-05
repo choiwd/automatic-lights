@@ -1,5 +1,13 @@
 [
     {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-mergeDebugResources-47:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-mergeDebugResources-47:\\layout\\login.xml",
+        "source": "C:\\Users\\choiw\\.gradle\\daemon\\7.4\\io.grpc.examples.helloworld.android-main-50:\\layout\\login.xml"
+    },
+    {
         "merged": "io.grpc.examples.helloworld.android-mergeDebugResources-47:/layout/login.xml",
         "source": "io.grpc.examples.helloworld.android-main-50:/layout/login.xml"
     },
