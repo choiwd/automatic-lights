@@ -10,10 +10,10 @@ const int infraRedChange = 400;  // limit for when we know someone passed the se
 const int lightLimit = 700;   // limit for the light sensor
 int lightLevel = 0;  // 1 if sensorLight > lightLimit (to much light to switch on LAMPADA)
                      // 0 if sensorLight =< lightLimit (can switch on LAMPADA)
-unsigned long tick = 0;
-int passed = 0;
+unsigned long tempoInfrRed = 0;
 unsigned long tempo;
-unsigned long deb;
+unsigned long tempoLuz;
+int passed = 0;
 int light = 2;
 
 
@@ -29,56 +29,71 @@ void loop() {
 
   tempo=millis();
 
-  if (tempo-deb > 500 and light!=2){
+ 
+ 
+  // ---- Sensor de luz
+ 
+  // quando há mudança no light level, o light level tem de ser 0.5 sec no mesmo threshold 
+  // para ser transmitido ao Raspberry Pi
+  if (tempo-tempoLuz > 500 and light!=2){
       lightLevel=light;
       Serial.println(lightLevel);
       light=2;
-      deb=0;
+      tempoLuz=0;
   }
   if (sensorLight > lightLimit and lightLevel == 0){
       if (light==0) {
         light=2;
-        deb = 0;
+        tempoLuz = 0;
       }
       if (light==2){
         light=1;
-        deb = millis();
+        tempoLuz = millis();
       }
   } else if (sensorLight > lightLimit and lightLevel == 1 and light==0) {
       light=1;
   } else if (sensorLight < lightLimit and lightLevel == 1) {
       if (light==1) {
         light=2;
-        deb = 0;
+        tempoLuz = 0;
       }
       if (light==2){
         light=0;
-        deb = millis();
+        tempoLuz = millis();
       }
   } else if (sensorLight < lightLimit and lightLevel == 0 and light==1) {
       light=0;
     }
 
-  if (tempo-tick > 4000) {
-    tick = 0;
+ 
+ 
+  // ---- Sensores infravermelhos
+ 
+  // depois de 4sec voltar como se ninguem passou por um sensor infravermenlho
+  if (tempo-tempoInfrRed > 4000) { 
+    tempoInfrRed = 0;
     passed = 0;
   }
-  if (sensorInfraRed1 > infraRedChange and tick==0 and passed==0){
+  if (sensorInfraRed1 > infraRedChange and tempoInfrRed==0 and passed==0){
     passed = 1;
-    tick = millis();
-  } else if (sensorInfraRed1 > infraRedChange and tick != 0 and passed == 2) {
+    tempoInfrRed = millis();
+  } else if (sensorInfraRed1 > infraRedChange and tempoInfrRed != 0 and passed == 2) {
     Serial.println("Entered");
     passed = 0;
-    tick = 0;
-  } else if (sensorInfraRed2 > infraRedChange and tick==0 and passed==0) {
+    tempoInfrRed = 0;
+  } else if (sensorInfraRed2 > infraRedChange and tempoInfrRed==0 and passed==0) {
     passed = 2;
-    tick = millis();
-  } else if (sensorInfraRed2 > infraRedChange and tick != 0 and passed == 1) {
+    tempoInfrRed = millis();
+  } else if (sensorInfraRed2 > infraRedChange and tempoInfrRed != 0 and passed == 1) {
     Serial.println("Left");
     passed = 0;
-    tick = 0;
+    tempoInfrRed = 0;
   }
-
+ 
+ 
+ 
+  // ---- Ligar desligar a luz
+ 
   if (Serial.available() > 0){
     int command = Serial.read()-'0';
     if (command==1){
@@ -87,17 +102,4 @@ void loop() {
       digitalWrite(LAMPADA, LOW);
     }
   }
-
-  // digitalWrite(LAMPADA, LOW);
-  // delay(1000);
-  // digitalWrite(LAMPADA, HIGH);
-  // delay(1000);
-  // print out the value you read:
- /* Serial.print(sensorInfraRed1);
-  Serial.print(", ");
-  Serial.print(sensorInfraRed2);
-  Serial.print(", ");
-  Serial.print(sensorLight);
-  Serial.print("\n");
-  delay(1);        // delay in between reads for stability*/
 }
